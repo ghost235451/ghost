@@ -1,5 +1,5 @@
 let app = express()
-const server = require('http').Server(app)
+const server = require('https').Server(app)
 let bot = LINEBot.create({
   channelID:'1522726717',
   channelSecret:'1d69960dcb17f09bb3bbd5caf820a1c5',
