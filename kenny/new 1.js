@@ -8,7 +8,7 @@ let bot = LINEBot.create({
 
 app.use(bot.webhook('/webhook'))
 
-  const googleMapsClient = require('@google/maps').createClient({ key: _GOOGLE_MAP_API_KEY })
+  const googleMapsClient = require('@google/maps').createClient({ key:AIzaSyDVuqN1isHa_YtDklDQ2Lxxov4kSLq_-vI})
   const payload = {
     origins,
     destinations,
