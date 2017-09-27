@@ -1,4 +1,11 @@
-let app = express()
+var express = require('express'); //require為使用模組
+var bodyParser = require('body-parser');
+var mongodb = require('mongodb'); //使用模組mongodb
+var linebot = require('linebot');
+var apiai = require('apiai');
+var request = require('request');
+
+var app = require('express')()
 const server = require('https').Server(app)
 let bot = LINEBot.create({
   channelID:'1522726717',
