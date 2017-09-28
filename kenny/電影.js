@@ -34,7 +34,7 @@ app.use(bot.webhook('/webhook'))
     })
   })
   
-  getShowtimes(theaterId).then((showtime) => {
+  getShowtimes(home/).then((showtime) => {
       let showtime_info = {}
       let st = new Showtime()
       st.cinema = cinema.cinemaName
@@ -42,15 +42,15 @@ app.use(bot.webhook('/webhook'))
       try {
         showtime_info = JSON.stringify(showtime)
       } catch(err) {
-        console.log(`${theaterId} error: ${err}`)
+        console.log(`${home/} error: ${err}`)
       }
       st.showtime_info = showtime_info
       st.save((err) => {
         if(err) {
           ErrorLogger(res, err.message, 'Failed to create new showtime.')
-          console.log(`Save theater${_theaterId} into DB Error`)
+          console.log(`Save theater${_home/} into DB Error`)
         } else {
-          console.log(`[${theaterId}] save success`)
+          console.log(`[${home/}] save success`)
         }
       })
   })
@@ -64,7 +64,7 @@ var fs = require('fs'),
     request = require('request'),
     cheerio = require('cheerio');
 
-var HOST = 'http://www.atmovies.com.tw/';
+var HOST = 'http://www.atmovies.com.tw/home/';
 
 var getPage = function(url, callback, links) {
     var links = links || []; 
