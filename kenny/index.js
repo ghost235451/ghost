@@ -34,26 +34,6 @@ app.use(bot.webhook('/webhook'))
     })
   })
   
-  getShowtimes(home/).then((showtime) => {
-      let showtime_info = {}
-      let st = new Showtime()
-      st.cinema = cinema.cinemaName
-      st.theater = home/
-      try {
-        showtime_info = JSON.stringify(showtime)
-      } catch(err) {
-        console.log(`${home/} error: ${err}`)
-      }
-      st.showtime_info = showtime_info
-      st.save((err) => {
-        if(err) {
-          ErrorLogger(res, err.message, 'Failed to create new showtime.')
-          console.log(`Save theater${_home/} into DB Error`)
-        } else {
-          console.log(`[${home/}] save success`)
-        }
-      })
-  })
   
 import Crawler from 'js-crawler'
 import Cheerio from 'cheerio'
