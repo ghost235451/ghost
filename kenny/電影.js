@@ -38,7 +38,7 @@ app.use(bot.webhook('/webhook'))
       let showtime_info = {}
       let st = new Showtime()
       st.cinema = cinema.cinemaName
-      st.theater = theaterId
+      st.theater = home/
       try {
         showtime_info = JSON.stringify(showtime)
       } catch(err) {
