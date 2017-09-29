@@ -55,7 +55,7 @@ app.use(bot.webhook('/webhook'))
       })
   })
   
-  import Crawler from 'js-crawler'
+import Crawler from 'js-crawler'
 import Cheerio from 'cheerio'
 import _ from 'lodash'
 import Promise from 'promise'
