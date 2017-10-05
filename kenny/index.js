@@ -45,15 +45,15 @@ var bot = linebot({
       try {
         showtime_info = JSON.stringify(showtime)
       } catch(err) {
-        console.log(`${home/} error: ${err}`)
+        console.log(`${theaterId} error: ${err}`)
       }
       st.showtime_info = showtime_info
       st.save((err) => {
         if(err) {
           ErrorLogger(res, err.message, 'Failed to create new showtime.')
-          console.log(`Save theater${_home/} into DB Error`)
+          console.log(`Save theater${theaterId} into DB Error`)
         } else {
-          console.log(`[${home/}] save success`)
+          console.log(`[${theaterId}] save success`)
         }
       })
   })
