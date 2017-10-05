@@ -1,9 +1,16 @@
-let app = express()
+var express = require('express'); //require為使用模組
+var bodyParser = require('body-parser');
+var mongodb = require('mongodb'); //使用模組mongodb
+var linebot = require('linebot'); 
+var apiai = require('apiai');
+var request = require('request');
+
+var app = require(express());
 const server = require('http').Server(app)
 let bot = LINEBot.create({
-  channelID,
-  channelSecret,
-  channelToken
+  channelID : '1522726717',
+  channelSecret:'1d69960dcb17f09bb3bbd5caf820a1c5',
+  channelToken:'/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU='
 }, server)
 
 app.use(bot.webhook('/webhook'))
