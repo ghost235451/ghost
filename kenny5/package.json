@@ -4,6 +4,10 @@
 "private" : true, 
 "dependencies" : { 
 "express" : "*", 
-"mongodb" : "*"
+"body-parser" : "*",
+"mongodb" : "*",
+"linebot" : "*",
+"apiai" : "*",
+"request" : "*"
 }
 }
