@@ -89,18 +89,6 @@ getShowtimes(theaterId).then((showtime) => {
       let st = new Showtime()
       st.cinema = cinema.cinemaName
       st.theater = theaterId
-      try {
-        showtime_info = JSON.stringify(showtime)
-      } catch(err) {
-        console.log(`${theaterId} error: ${err}`)
-      }
-      st.showtime_info = showtime_info
-      st.save((err) => {
-        if(err) {
-          ErrorLogger(res, err.message, 'Failed to create new showtime.')
-          console.log(`Save theater${_theaterId} into DB Error`)
-        } else {
-          console.log(`[${theaterId}] save success`)
         }
       })
   })
