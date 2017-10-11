@@ -13,110 +13,47 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 }));*/
 
 var bot = linebot({
-  "channelId": "1522726717",
-  "channelSecret": "1d69960dcb17f09bb3bbd5caf820a1c5",
-  "channelAccessToken": "/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU="
+  "channelId": "1531669581",
+  "channelSecret": "a990b2c5396e8e5c207db5e034d74711",
+  "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
- const googleMapsClient = require('@google/maps').createClient({ key:AIzaSyDVuqN1isHa_YtDklDQ2Lxxov4kSLq_-vI})
-  const payload = {
-    origins,
-    destinations,
-    units: 'metric',
-    language: 'zh-TW'
-  }
-  const GoogleMapPromise = new Promise((resolve, reject) => {
-    googleMapsClient.distanceMatrix(payload, (err, res) => {
-      if (!err) {
-        console.log('Google Distance Matrix Response', JSON.stringify(res.json))
-        const distanceMatrix = res.json.rows[0].elements 
-        // ...
-
-        resolve(distanceMatrix)
-      }
-    })
-  })
-  
-  getShowtimes(home/).then((showtime) => {
-      let showtime_info = {}
-      let st = new Showtime()
-      st.cinema = cinema.cinemaName
-      st.theater = home/
-      try {
-        showtime_info = JSON.stringify(showtime)
-      } catch(err) {
-        console.log(`${theaterId} error: ${err}`)
-      }
-      st.showtime_info = showtime_info
-      st.save((err) => {
-        if(err) {
-          ErrorLogger(res, err.message, 'Failed to create new showtime.')
-          console.log(`Save theater${theaterId} into DB Error`)
-        } else {
-          console.log(`[${theaterId}] save success`)
-        }
-      })
-  })
-  
-import Crawler from 'js-crawler'
-import Cheerio from 'cheerio'
-import _ from 'lodash'
-import Promise from 'promise'
-
-var fs = require('fs'),
-    request = require('request'),
-    cheerio = require('cheerio');
-
-var HOST = 'http://www.atmovies.com.tw/home/';
-
-var getPage = function(url, callback, links) {
-    var links = links || []; 
-    request(url, function(err, res, body) {
-        if (!err && res.statusCode == 200) {
-            var lastPage;
-            var $ = cheerio.load(body); 
-			//得到全部 page 的 URL
-            $('div > div:nth-child(3) > div > ul > li > a').each(function(i, e) { 
-                links.push($(e).attr('href'));
-            });
-            callback(links);
-        }
+bot.on('message', function(event) {
+  if (event.message.type = 'text') {
+    var msg = event.message.text;
+  //收到文字訊息時，直接把收到的訊息傳回去
+    event.reply(msg).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(msg);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
     });
-};
-
-getShowtimes(theaterId).then((showtime) => {
-      let showtime_info = {}
-      let st = new Showtime()
-      st.cinema = cinema.cinemaName
-      st.theater = theaterId
-        }
-      })
-  })
-import Crawler from 'js-crawler'
-import Cheerio from 'cheerio'
-import _ from 'lodash'
-import Promise from 'promise'
-
-crawler.crawl({
-  url: `http://www.vscinemas.com.tw/visPrintShowTimes.aspx?cid=${_theaterId}&visLang=2`,
-
-  success: (page) => {
-    const html = page.content.toString()
-    const $ = Cheerio.load(html)
-    let tables = $('.PrintShowTimesFilm').parent().parent().parent().find('table')
-    let showtimes = []
-    _.map(tables, (table, idx) => {
-      let title = $(table).find('.PrintShowTimesFilm').text()
-        // ...
-
-    })
-    resolve(showtimes)
-  },
-  failure: (page) => {
-    console.log(`Get Showtimes Failed on theater: ${_theaterId}`)
-    reject([])
   }
+});
+
+/*bot.on('message', function(event) {
+  console.log(event); //把收到訊息的 event 印出來看看
+});*/
+
+var linebotParser = bot.parser();
+app.post('/', linebotParser);  //路徑 
+
+var api = apiai("96499911855b40b29cc7908eca2ed768");
+ 
+ var request = api.textRequest('text', {
+    sessionId: 'Jason'
+});
+
+request.on('response', function(response) {
+    console.log(response);
+});
+
+request.on('error', function(error) {
+    console.log(error);
 })
+ 
+request.end();
 
 /*app.post('/webhook', function(req, res) {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
