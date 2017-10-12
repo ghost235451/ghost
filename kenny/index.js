@@ -4,6 +4,7 @@ var linebot = require('linebot');
 var mongodb = require('mongodb'); //使用模組mongodb
 var apiai = require('apiai');
 var request = require('request');
+var cheerio = require("cheerio");
 
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
