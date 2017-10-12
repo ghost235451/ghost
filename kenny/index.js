@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 	extended: true 
 }));*/
 
-var buttons = new LINEBot.ButtonTemplateBuilder();
 
 var bot = linebot({
   "channelId": "1522726717",
