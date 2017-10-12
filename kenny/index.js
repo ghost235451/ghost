@@ -13,15 +13,6 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 }));*/
 
 var buttons = new LINEBot.ButtonTemplateBuilder();
-buttons.setTitle('Menu');
-buttons.setMessage('Please select');
-buttons.setThumbnail('https://goo.gl/images/J1nPqU');
- 
-// label, data/url, type 
-buttons.addAction('Buy', 'action=buy&itemid=123', LINEBot.Action.POSTBACK);
-buttons.addAction('Add to cart', 'action=buy&itemid=123', LINEBot.Action.POSTBACK);
-buttons.addAction('View detail', 'http://example.com/page/123', LINEBot.Action.URI);
-
 
 var bot = linebot({
   "channelId": "1522726717",
