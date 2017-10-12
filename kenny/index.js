@@ -12,6 +12,17 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 	extended: true 
 }));*/
 
+var buttons = new LINEBot.ButtonTemplateBuilder();
+buttons.setTitle('Menu');
+buttons.setMessage('Please select');
+buttons.setThumbnail('https://goo.gl/images/J1nPqU');
+ 
+// label, data/url, type 
+buttons.addAction('Buy', 'action=buy&itemid=123', LINEBot.Action.POSTBACK);
+buttons.addAction('Add to cart', 'action=buy&itemid=123', LINEBot.Action.POSTBACK);
+buttons.addAction('View detail', 'http://example.com/page/123', LINEBot.Action.URI);
+
+
 var bot = linebot({
   "channelId": "1522726717",
   "channelSecret": "1d69960dcb17f09bb3bbd5caf820a1c5",
@@ -53,6 +64,7 @@ request.on('error', function(error) {
     console.log(error);
 })
  
+
 request.end();
 
 /*app.post('/webhook', function(req, res) {
