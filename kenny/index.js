@@ -5,6 +5,8 @@ var mongodb = require('mongodb'); //使用模組mongodb
 var apiai = require('apiai');
 var request = require('request');
 
+var cheerio = require("cheerio");
+
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 /*app.use(bodyParser.json());
@@ -19,19 +21,37 @@ var bot = linebot({
   "channelAccessToken": "/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-// bot.on('message', function(event) {
-//   if (event.message.type = 'text') {
-//     var msg = event.message.text;
-//   //收到文字訊息時，直接把收到的訊息傳回去
-//     event.reply(msg).then(function(data) {
-//       // 傳送訊息成功時，可在此寫程式碼 
-//       console.log(msg);
-//     }).catch(function(error) {
-//       // 傳送訊息失敗時，可在此寫程式碼 
-//       console.log('錯誤產生，錯誤碼：'+error);
-//     });
-//   }
-// });
+bot.on('message', function(event) {
+  if (event.message.type = 'text') {
+    // var msg = event.message.text;
+	  
+	  request({
+	    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+	    method: "GET"
+	  }, function(error, response, body) {
+	    if (error || !body) {
+	      return;
+	    } else {
+	      var $ = cheerio.load(body);
+	      var target = $(".rate-content-cash text-right print_hide");
+	      console.log(target[0].children[0].data);
+	      jp = target[0].children[0].data;
+		  if (jp > 10) {
+		  	var msg = ('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+	      }
+	      
+	    }
+  //收到文字訊息時，直接把收到的訊息傳回去
+    event.reply(msg).then(function(data) {
+
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(msg);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }
+});
 
 /*bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
@@ -112,7 +132,7 @@ function _japan() {
       var target = $(".rate-content-cash text-right print_hide");
       console.log(target[0].children[0].data);
       jp = target[0].children[0].data;
-	  f (jp > 10) {
+	  if (jp > 10) {
 	  	bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
       }
       timer2 = setInterval(_japan, 10000);
