@@ -8,7 +8,7 @@ var cheerio = require("cheerio");
 var getJSON = require('get-json');
 
 
-var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
+// var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 /*app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
@@ -24,35 +24,35 @@ var bot = linebot({
 
 _japan();
 
-bot.on('message', function(event) {
-  if (event.message.type = 'text') {
-    // var msg = event.message.text;
+// bot.on('message', function(event) {
+//   if (event.message.type = 'text') {
+//     // var msg = event.message.text;
 	  
-	  request({
-	    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-	    method: "GET"
-	  }, function(error, response, body) {
-	    if (error || !body) {
-	      return;
-	    } else {
-	      var $ = cheerio.load(body);
-	      var target = $(".rate-content-cash text-right print_hide");
-	      console.log(target[0].children[0].data);
-	      jp = target[0].children[0].data;
-		  var msg = ('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
-		  	  //收到文字訊息時，直接把收到的訊息傳回去
-    	  event.reply(msg).then(function(data) {
-      		// 傳送訊息成功時，可在此寫程式碼 
-      		console.log(msg);
-    	  }).catch(function(error) {
-      		// 傳送訊息失敗時，可在此寫程式碼 
-      		console.log('錯誤產生，錯誤碼：'+error);
-   		  });
+// 	  request({
+// 	    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+// 	    method: "GET"
+// 	  }, function(error, response, body) {
+// 	    if (error || !body) {
+// 	      return;
+// 	    } else {
+// 	      var $ = cheerio.load(body);
+// 	      var target = $(".rate-content-cash text-right print_hide");
+// 	      console.log(target[0].children[0].data);
+// 	      jp = target[0].children[0].data;
+// 		  var msg = ('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+// 		  	  //收到文字訊息時，直接把收到的訊息傳回去
+//     	  event.reply(msg).then(function(data) {
+//       		// 傳送訊息成功時，可在此寫程式碼 
+//       		console.log(msg);
+//     	  }).catch(function(error) {
+//       		// 傳送訊息失敗時，可在此寫程式碼 
+//       		console.log('錯誤產生，錯誤碼：'+error);
+//    		  });
 
 	      
-	    }
-  }
-});
+// 	    }
+//   }
+// });
 
 var timer;
 var pm = [];
