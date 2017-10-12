@@ -36,18 +36,16 @@ bot.on('message', function(event) {
 	      var target = $(".rate-content-cash text-right print_hide");
 	      console.log(target[0].children[0].data);
 	      jp = target[0].children[0].data;
-		  if (jp > 10) {
-		  	var msg = ('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+		  var msg = ('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
 		  	  //收到文字訊息時，直接把收到的訊息傳回去
-    		event.reply(msg).then(function(data) {
+    	  event.reply(msg).then(function(data) {
       		// 傳送訊息成功時，可在此寫程式碼 
-      			console.log(msg);
-    		}).catch(function(error) {
+      		console.log(msg);
+    	  }).catch(function(error) {
       		// 傳送訊息失敗時，可在此寫程式碼 
-      			console.log('錯誤產生，錯誤碼：'+error);
-   			});
+      		console.log('錯誤產生，錯誤碼：'+error);
+   		  });
 
-	      }
 	      
 	    }
   }
@@ -57,8 +55,8 @@ bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
 });*/
 
-// var linebotParser = bot.parser();
-// app.post('/', linebotParser);  //路徑 
+var linebotParser = bot.parser();
+app.post('/', linebotParser);  //路徑 
 
 // var api = apiai("96499911855b40b29cc7908eca2ed768");
  
