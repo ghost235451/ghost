@@ -24,6 +24,7 @@ bot.on('message', function(event) {
     var msg = event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
+      _japan();
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
     }).catch(function(error) {
@@ -32,6 +33,27 @@ bot.on('message', function(event) {
     });
   }
 });
+
+function _japan() {
+  clearTimeout(timer2);
+  request({
+    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+    method: "GET"
+  }, function(error, response, body) {
+    if (error || !body) {
+      return;
+    } else {
+      var $ = cheerio.load(body);
+      var target = $(".rate-content-cash text-right print_hide");
+      console.log(target[0].children[0].data);
+      jp = target[0].children[0].data;
+   if (jp > 10) {
+     bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+      }
+      timer2 = setInterval(_japan, 10000);
+    }
+  });
+}
 
 /*bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
