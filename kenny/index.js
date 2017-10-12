@@ -38,18 +38,18 @@ bot.on('message', function(event) {
 	      jp = target[0].children[0].data;
 		  if (jp > 10) {
 		  	var msg = ('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+		  	  //收到文字訊息時，直接把收到的訊息傳回去
+    		event.reply(msg).then(function(data) {
+      		// 傳送訊息成功時，可在此寫程式碼 
+      			console.log(msg);
+    		}).catch(function(error) {
+      		// 傳送訊息失敗時，可在此寫程式碼 
+      			console.log('錯誤產生，錯誤碼：'+error);
+   			});
+
 	      }
 	      
 	    }
-  //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(msg).then(function(data) {
-
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
   }
 });
 
