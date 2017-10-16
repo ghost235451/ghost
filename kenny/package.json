@@ -8,7 +8,7 @@
 "mongodb" : "*",
 "linebot" : "*",
 "apiai" : "*",
-"request" : "*"
-"cheerio" : "*"
+"request" : "*",
+"cheerio" : "*",
 }
 }
