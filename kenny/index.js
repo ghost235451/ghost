@@ -77,7 +77,8 @@ function _japan() {
     	var $ = cheerio.load(body);
         var target = $(".rate-content-cash text-right print_hide");
         console.log(target[0].children[0].data);
-        var jp = target[0].children[0].data;
+        // var jp = target[0].children[0].data;
+        var jp ='fuck';
         return jp;
 
         // bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
