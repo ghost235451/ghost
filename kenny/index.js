@@ -19,13 +19,13 @@ var bot = linebot({
   "channelAccessToken": "/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-_japan();
+
 bot.on('message', function(event) {
+	_japan();
   if (event.message.type = 'text') {
     var msg = event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
-    	_japan();
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
     }).catch(function(error) {
@@ -118,18 +118,19 @@ var server = app.listen(process.env.PORT || 8080, function() {
 function _japan() {
   // clearTimeout(timer2);
   request({
-    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+  	url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
     method: "GET"
   }, function(error, response, body) {
     if (error || !body) {
-      return;
+    	bot.push('GG');
+    	return;
     } else {
-      var $ = cheerio.load(body);
-      var target = $(".rate-content-cash text-right print_hide");
-      console.log(target[0].children[0].data);
-      var jp = target[0].children[0].data;
+    	var $ = cheerio.load(body);
+        var target = $(".rate-content-cash text-right print_hide");
+        console.log(target[0].children[0].data);
+        var jp = target[0].children[0].data;
 
-      bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+        bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
 
       // timer2 = setInterval(_japan, 1000);
     }
