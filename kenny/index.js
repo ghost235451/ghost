@@ -26,7 +26,7 @@ bot.on('message', function(event) {
     var msg = event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
-      _japan();
+      // _japan();
 
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
@@ -53,7 +53,7 @@ var jp = function() {
 };
 
 function _japan() {
-  clearTimeout(timer2);
+  // clearTimeout(timer2);
   request({
     url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
     method: "GET"
@@ -68,7 +68,7 @@ function _japan() {
 
       bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
 
-      timer2 = setInterval(_japan, 1000);
+      // timer2 = setInterval(_japan, 1000);
     }
   });
 }
