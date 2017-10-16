@@ -26,7 +26,7 @@ bot.on('message', function(event) {
     var msg = event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
-      // _japan();
+      _japan();
 
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
@@ -37,6 +37,20 @@ bot.on('message', function(event) {
   }
 });
 
+var jp = function() {
+  request({
+    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+    method: "GET"
+  }, function(error, response, body) {
+    if (error || !body) {
+      return;
+    }else{
+
+    // 爬完網頁後要做的事情
+        console.log(body);
+    }
+  });
+};
 
 function _japan() {
   clearTimeout(timer2);
