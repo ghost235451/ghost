@@ -9,5 +9,6 @@
 "linebot" : "*",
 "apiai" : "*",
 "request" : "*"
+"cheerio" : "*"
 }
 }
