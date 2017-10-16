@@ -37,41 +37,41 @@ bot.on('message', function(event) {
   }
 });
 
-var jp = function() {
-  request({
-    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-    method: "GET"
-  }, function(error, response, body) {
-    if (error || !body) {
-      return;
-    }else{
+// var jp = function() {
+//   request({
+//     url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+//     method: "GET"
+//   }, function(error, response, body) {
+//     if (error || !body) {
+//       return;
+//     }else{
 
-    // 爬完網頁後要做的事情
-        console.log(body);
-    }
-  });
-};
+//     // 爬完網頁後要做的事情
+//         console.log(body);
+//     }
+//   });
+// };
 
-function _japan() {
-  // clearTimeout(timer2);
-  request({
-    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-    method: "GET"
-  }, function(error, response, body) {
-    if (error || !body) {
-      return;
-    } else {
-      var $ = cheerio.load(body);
-      var target = $(".rate-content-cash text-right print_hide");
-      console.log(target[0].children[0].data);
-      jp = target[0].children[0].data;
+// function _japan() {
+//   // clearTimeout(timer2);
+//   request({
+//     url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+//     method: "GET"
+//   }, function(error, response, body) {
+//     if (error || !body) {
+//       return;
+//     } else {
+//       var $ = cheerio.load(body);
+//       var target = $(".rate-content-cash text-right print_hide");
+//       console.log(target[0].children[0].data);
+//       jp = target[0].children[0].data;
 
-      bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+//       bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
 
-      // timer2 = setInterval(_japan, 1000);
-    }
-  });
-}
+//       // timer2 = setInterval(_japan, 1000);
+//     }
+//   });
+// }
 
 /*bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
