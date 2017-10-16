@@ -22,9 +22,10 @@ var bot = linebot({
 
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-    var msg = event.message.text;
+    // var msg = event.message.text;
+    var msg = _japan();
   //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(_japan).then(function(data) {
+    event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
     }).catch(function(error) {
@@ -70,15 +71,16 @@ function _japan() {
     method: "GET"
   }, function(error, response, body) {
     if (error || !body) {
-    	bot.push('GG');
-    	return;
+    	var gg ='GG';
+    	return gg;
     } else {
     	var $ = cheerio.load(body);
         var target = $(".rate-content-cash text-right print_hide");
         console.log(target[0].children[0].data);
         var jp = target[0].children[0].data;
+        return jp;
 
-        bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+        // bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
 
       // timer2 = setInterval(_japan, 1000);
     }
