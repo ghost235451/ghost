@@ -8,7 +8,7 @@ var cheerio = require("cheerio");
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-/*app.use(bodyParser.json());
+*app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 	extended: true 
 }));*/
@@ -22,8 +22,8 @@ var bot = linebot({
 
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-    // var msg = event.message.text;
-    var msg = _japan();
+    var msg = event.message.text;
+// var msg = _japan();
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
     	event.reply('幹為什麼一直失敗')
