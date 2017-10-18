@@ -23,7 +23,7 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
-// var msg = _japan();
+    var msg = _japan();
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
     	event.reply('幹為什麼一直失敗')
