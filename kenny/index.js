@@ -24,6 +24,7 @@ var timer;
 var pm = [];
 _getJSON();
 
+_japan();
 _bot();
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
@@ -120,29 +121,29 @@ function _getJSON() {
 //   });
 // // };
 
-// function _japan() {
-//   // clearTimeout(timer2);
-//   request({
-//   	url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-//     method: "GET"
-//   }, function(error, response, body) {
-//     if (error || !body) {
-//     	var gg ='GG';
-//     	return gg;
-//     } else {
-//     	var $ = cheerio.load(body);
-//         var target = $(".rate-content-cash text-right print_hide");
-//         console.log(target[0].children[0].data);
-//         var jp = target[0].children[0].data;
-//         // var jp ='fuck';
+function _japan() {
+  // clearTimeout(timer2);
+  request({
+  	url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+    method: "GET"
+  }, function(error, response, body) {
+    if (error || !body) {
+    	var gg ='GG';
+    	return gg;
+    } else {
+    	var $ = cheerio.load(body);
+        var target = $(".rate-content-cash.text-right.print_hide");
+        console.log(target[0].children[0].data);
+        var jp = target[0].children[0].data;
+        // var jp ='fuck';
         
 
-//         bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+        bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
 
-//       // timer2 = setInterval(_japan, 1000);
-//     }
-//   });
-// }
+      // timer2 = setInterval(_japan, 1000);
+    }
+  });
+}
 
 
 
