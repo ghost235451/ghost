@@ -5,6 +5,7 @@ var mongodb = require('mongodb'); //使用模組mongodb
 var apiai = require('apiai');
 var request = require('request');
 var cheerio = require("cheerio");
+var getJSON = require('get-json');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
@@ -19,24 +20,70 @@ var bot = linebot({
   "channelAccessToken": "/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
+var timer;
+var pm = [];
+_getJSON();
 
+_bot();
 
+function _bot() {
+  bot.on('message', function(event) {
+    if (event.message.type == 'text') {
+      var msg = event.message.text;
+      var replyMsg = '';
+      if (msg.indexOf('PM2.5') != -1) {
+        pm.forEach(function(e, i) {
+          if (msg.indexOf(e[0]) != -1) {
+            replyMsg = e[0] + '的 PM2.5 數值為 ' + e[1];
+          }
+        });
+        if (replyMsg == '') {
+          replyMsg = '請輸入正確的地點';
+        }
+      }
+      if (replyMsg == '') {
+        replyMsg = '不知道「'+msg+'」是什麼意思 :p';
+      }
 
-bot.on('message', function(event) {
-  if (event.message.type = 'text') {
+      event.reply(replyMsg).then(function(data) {
+        console.log(replyMsg);
+      }).catch(function(error) {
+        console.log('error');
+      });
+    }
+  });
 
-    var msg = event.message.text;
-  //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(msg).then(function(data) {
-    	event.reply('...');
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
+}
+
+function _getJSON() {
+  clearTimeout(timer);
+  getJSON('http://opendata2.epa.gov.tw/AQX.json', function(error, response) {
+    response.forEach(function(e, i) {
+      pm[i] = [];
+      pm[i][0] = e.SiteName;
+      pm[i][1] = e['PM2.5'] * 1;
+      pm[i][2] = e.PM10 * 1;
     });
-  }
-});
+  });
+  timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
+}
+
+
+// bot.on('message', function(event) {
+//   if (event.message.type = 'text') {
+
+//     var msg = event.message.text;
+//   //收到文字訊息時，直接把收到的訊息傳回去
+//     event.reply(msg).then(function(data) {
+//     	event.reply('...');
+//       // 傳送訊息成功時，可在此寫程式碼 
+//       console.log(msg);
+//     }).catch(function(error) {
+//       // 傳送訊息失敗時，可在此寫程式碼 
+//       console.log('錯誤產生，錯誤碼：'+error);
+//     });
+//   }
+// });
 
 
 
