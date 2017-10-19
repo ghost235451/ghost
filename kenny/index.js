@@ -118,7 +118,7 @@ function _getJSON() {
 //         console.log(body);
 //     }
 //   });
-// };
+// // };
 
 // function _japan() {
 //   // clearTimeout(timer2);
@@ -142,7 +142,7 @@ function _getJSON() {
 //       // timer2 = setInterval(_japan, 1000);
 //     }
 //   });
-}
+// }
 
 
 
