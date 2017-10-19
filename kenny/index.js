@@ -23,7 +23,9 @@ var bot = linebot({
 var timer;
 var pm = [];
 // _getJSON();
-bot.push('GG');
+bot.on('message',function(event){
+	event.push("gg");
+});
 _japan();
 // _bot();
 
