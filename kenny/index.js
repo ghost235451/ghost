@@ -113,7 +113,20 @@ function _japan() {
       console.log(target[15].children[0].data);
       var jp = target[15].children[0].data;
       if (jp > 0) {
-        bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+      	bot.on('message', function(event) {
+		  if (event.message.type = 'text') {
+
+		  //收到文字訊息時，直接把收到的訊息傳回去
+		    event.reply(jp).then(function(data) {
+		    	event.reply('...');
+		      // 傳送訊息成功時，可在此寫程式碼 
+		      console.log(msg);
+		    }).catch(function(error) {
+		      // 傳送訊息失敗時，可在此寫程式碼 
+		      console.log('錯誤產生，錯誤碼：'+error);
+		    });
+	  }
+        // bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
       }
       // timer2 = setInterval(_japan, 120000);
     }
