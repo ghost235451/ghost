@@ -122,7 +122,7 @@ function _getJSON() {
 // // };
 
 function _japan() {
-  clearTimeout(timer2);
+  // clearTimeout(timer2);
   request({
     url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
     method: "GET"
@@ -137,7 +137,7 @@ function _japan() {
       if (jp < 0.35) {
         bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
       }
-      timer2 = setInterval(_japan, 120000);
+      // timer2 = setInterval(_japan, 120000);
     }
   });
 }
