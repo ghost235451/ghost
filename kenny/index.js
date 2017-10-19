@@ -22,10 +22,10 @@ var bot = linebot({
 
 var timer;
 var pm = [];
-_getJSON();
+// _getJSON();
 
 _japan();
-_bot();
+// _bot();
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 var linebotParser = bot.parser();
@@ -68,7 +68,7 @@ function _bot() {
 }
 
 function _getJSON() {
-  clearTimeout(timer);
+  // clearTimeout(timer);
   getJSON('http://opendata2.epa.gov.tw/AQX.json', function(error, response) {
     response.forEach(function(e, i) {
       pm[i] = [];
@@ -77,7 +77,7 @@ function _getJSON() {
       pm[i][2] = e.PM10 * 1;
     });
   });
-  timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
+  // timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
 }
 
 
