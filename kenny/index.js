@@ -23,10 +23,10 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
-    var msg = _japan();
+    var msg2 = _japan();
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
-    	event.reply('幹為什麼一直失敗')
+    	event.reply('...')
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
     }).catch(function(error) {
@@ -50,20 +50,20 @@ var server = app.listen(process.env.PORT || 8080, function() {
 
 
 
-var jp = function() {
-  request({
-    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-    method: "GET"
-  }, function(error, response, body) {
-    if (error || !body) {
-      return;
-    }else{
+// var jp = function() {
+//   request({
+//     url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+//     method: "GET"
+//   }, function(error, response, body) {
+//     if (error || !body) {
+//       return;
+//     }else{
 
-    // 爬完網頁後要做的事情
-        console.log(body);
-    }
-  });
-};
+//     // 爬完網頁後要做的事情
+//         console.log(body);
+//     }
+//   });
+// };
 
 function _japan() {
   // clearTimeout(timer2);
@@ -78,11 +78,11 @@ function _japan() {
     	var $ = cheerio.load(body);
         var target = $(".rate-content-cash text-right print_hide");
         console.log(target[0].children[0].data);
-        // var jp = target[0].children[0].data;
-        var jp ='fuck';
-        return jp;
+        var jp = target[0].children[0].data;
+        // var jp ='fuck';
+        
 
-        // bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+        bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
 
       // timer2 = setInterval(_japan, 1000);
     }
