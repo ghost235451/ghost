@@ -7,7 +7,7 @@ var request = require('request');
 var cheerio = require("cheerio");
 var getJSON = require('get-json');
 
-var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
+
 
 /*app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
@@ -25,6 +25,17 @@ var pm = [];
 _getJSON();
 
 _bot();
+
+var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
+var linebotParser = bot.parser();
+app.post('/', linebotParser);  //路徑 
+
+//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
+var server = app.listen(process.env.PORT || 8080, function() {
+  var port = server.address().port;
+  console.log("App now running on port", port);
+});
+
 
 function _bot() {
   bot.on('message', function(event) {
@@ -87,15 +98,7 @@ function _getJSON() {
 
 
 
-var linebotParser = bot.parser();
-app.post('/', linebotParser);  //路徑 
 
-
-//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
-var server = app.listen(process.env.PORT || 8080, function() {
-  var port = server.address().port;
-  console.log("App now running on port", port);
-});
 
 
 
