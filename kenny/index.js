@@ -23,9 +23,9 @@ var bot = linebot({
 var timer;
 var pm = [];
 // _getJSON();
-bot.on('message',function(event){
-	event.reply("gg");
-});
+// bot.on('message',function(event){
+// 	event.reply("gg");
+// });
 _japan();
 // _bot();
 
@@ -115,7 +115,7 @@ function _japan() {
       console.log(target[0].children[0].data);
       var jp = target[0].children[0].data;
       if (jp > 0) {
-        bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+        bot.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
       }
       // timer2 = setInterval(_japan, 120000);
     }
