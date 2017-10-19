@@ -112,12 +112,13 @@ function _japan() {
     } else {
       var $ = cheerio.load(body);
       var target = $(".rate-content-sight.text-right.print_hide");
-      console.log(target[14].children[0].data);
+      // console.log(target[14].children[0].data);
       var jp = target[14].children[0].data;
-      if (jp > 0) {
+      var jp2 = target[0].children[0].data;
+      // if (jp > 0) {
       	bot.on('message',function(event){
-      		event.reply('現在日幣匯率' + jp );
-      	});
+      		event.reply('現在日幣匯率' + jp +'美金' +jp2);
+      	// });
         // bot.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
       }
       // timer2 = setInterval(_japan, 120000);
