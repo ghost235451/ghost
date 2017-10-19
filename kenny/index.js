@@ -112,8 +112,8 @@ function _japan() {
     } else {
       var $ = cheerio.load(body);
       var target = $(".rate-content-sight.text-right.print_hide");
-      console.log(target[8].children[0].data);
-      var jp = target[8].children[0].data;
+      console.log(target[14].children[0].data);
+      var jp = target[14].children[0].data;
       if (jp > 0) {
       	bot.on('message',function(event){
       		event.reply('現在日幣匯率' + jp );
