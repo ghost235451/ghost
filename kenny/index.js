@@ -116,7 +116,7 @@ function _japan() {
       var jp = target[0].children[0].data;
       if (jp > 0) {
       	bot.on('message',function(event){
-      		event.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+      		event.reply('現在日幣 ' + jp );
       	});
         // bot.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
       }
