@@ -26,8 +26,8 @@ var pm = [];
 // bot.on('message',function(event){
 // 	event.reply("gg");
 // });
-_japan();
-// _bot();
+// _japan();
+_bot();
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 var linebotParser = bot.parser();
