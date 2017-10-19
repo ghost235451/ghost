@@ -104,22 +104,22 @@ function _getJSON() {
 function _japan() {
   // clearTimeout(timer2);
   request({
-    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+    url: "http://www.shu.edu.tw/",
     method: "GET"
   }, function(error, response, body) {
     if (error || !body) {
       return;
     } else {
       var $ = cheerio.load(body);
-      var target = $(".rate-content-sight.text-right.print_hide");
+      var target = $(".news-hot-box");
       console.log(target[0].children[0].data);
       var jp = target[0].children[0].data;
-      if (jp > 0) {
+      // if (jp > 0) {
       	bot.on('message',function(event){
-      		event.reply('現在日幣 ' + jp );
+      		event.reply('最新發佈' + jp );
       	});
         // bot.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
-      }
+      // }
       // timer2 = setInterval(_japan, 120000);
     }
   });
