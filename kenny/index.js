@@ -19,40 +19,41 @@ var bot = linebot({
   "channelAccessToken": "/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
+
+
+
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-  	request({
-    url: "http://blog.infographics.tw",
+
+var jp = function() {
+  request({
+    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
     method: "GET"
-  }, function(e,r,b) {
-    if(e || !b) { return; }
-    var $ = cheerio.load(b);
-    var result = [];
-    var titles = $("li.item h2");
-    for(var i=0;i<titles.length;i++) {
-      result.push($(titles[i]).text());
+  }, function(error, response, body) {
+    if (error || !body) {
+      return;
+    }else{
+    	var $ = cheerio.load(body);
+    	var target = $(".rate-content-cash text-right print_hide");
+    	jp= target[0].data;
+
+    // 爬完網頁後要做的事情
+        console.log(body);
     }
-    event.reply("result.json", JSON.stringify(result));
   });
+};
+    // var msg = event.message.text;
+  //收到文字訊息時，直接把收到的訊息傳回去
+    event.reply(jp).then(function(data) {
+    	event.reply('...');
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(msg);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
   }
 });
-
-
-// bot.on('message', function(event) {
-//   if (event.message.type = 'text') {
-//   	_japan();
-//     var msg = event.message.text;
-//   //收到文字訊息時，直接把收到的訊息傳回去
-//     event.reply(msg).then(function(data) {
-//     	event.reply('...');
-//       // 傳送訊息成功時，可在此寫程式碼 
-//       console.log(msg);
-//     }).catch(function(error) {
-//       // 傳送訊息失敗時，可在此寫程式碼 
-//       console.log('錯誤產生，錯誤碼：'+error);
-//     });
-//   }
-// });
 
 
 
@@ -76,6 +77,9 @@ var server = app.listen(process.env.PORT || 8080, function() {
 //     if (error || !body) {
 //       return;
 //     }else{
+//     	var $ = cheerio.load(body);
+//     	var target = $(".rate-content-cash text-right print_hide");
+//     	jp= target[0].data;
 
 //     // 爬完網頁後要做的事情
 //         console.log(body);
