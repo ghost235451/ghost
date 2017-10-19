@@ -133,7 +133,7 @@ function _japan() {
       var $ = cheerio.load(body);
       var target = $(".rate-content-sight.text-right.print_hide");
       console.log(target[15].children[0].data);
-      jp = target[15].children[0].data;
+      var jp = target[15].children[0].data;
       if (jp < 0.35) {
         bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
       }
