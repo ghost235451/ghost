@@ -25,26 +25,9 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
 
-var jp = function() {
-  request({
-    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-    method: "GET"
-  }, function(error, response, body) {
-    if (error || !body) {
-      return;
-    }else{
-    	var $ = cheerio.load(body);
-    	var target = $(".rate-content-cash text-right print_hide");
-    	jp= target[0].data;
-
-    // 爬完網頁後要做的事情
-        console.log(body);
-    }
-  });
-};
-    // var msg = event.message.text;
+    var msg = event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(jp).then(function(data) {
+    event.reply(msg).then(function(data) {
     	event.reply('...');
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
