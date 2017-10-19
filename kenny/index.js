@@ -50,44 +50,44 @@ var server = app.listen(process.env.PORT || 8080, function() {
 
 
 
-// var jp = function() {
-//   request({
-//     url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-//     method: "GET"
-//   }, function(error, response, body) {
-//     if (error || !body) {
-//       return;
-//     }else{
-
-//     // 爬完網頁後要做的事情
-//         console.log(body);
-//     }
-//   });
-// };
-
-function _japan() {
-  // clearTimeout(timer2);
+var jp = function() {
   request({
-  	url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
     method: "GET"
   }, function(error, response, body) {
     if (error || !body) {
-    	var gg ='GG';
-    	return gg;
-    } else {
-    	var $ = cheerio.load(body);
-        var target = $(".rate-content-cash text-right print_hide");
-        console.log(target[0].children[0].data);
-        // var jp = target[0].children[0].data;
-        var jp ='fuck';
-        return jp;
+      return;
+    }else{
 
-        // bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
-
-      // timer2 = setInterval(_japan, 1000);
+    // 爬完網頁後要做的事情
+        console.log(body);
     }
   });
-}
+};
+
+// function _japan() {
+//   // clearTimeout(timer2);
+//   request({
+//   	url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+//     method: "GET"
+//   }, function(error, response, body) {
+//     if (error || !body) {
+//     	var gg ='GG';
+//     	return gg;
+//     } else {
+//     	var $ = cheerio.load(body);
+//         var target = $(".rate-content-cash text-right print_hide");
+//         console.log(target[0].children[0].data);
+//         // var jp = target[0].children[0].data;
+//         var jp ='fuck';
+//         return jp;
+
+//         // bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+
+//       // timer2 = setInterval(_japan, 1000);
+//     }
+//   });
+// }
 
 
 
