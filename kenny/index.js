@@ -24,7 +24,7 @@ var timer;
 var pm = [];
 // _getJSON();
 bot.on('message',function(event){
-	event.push("gg");
+	event.reply("gg");
 });
 _japan();
 // _bot();
