@@ -144,7 +144,7 @@ function _japan() {
 // });
 
 
-const line = require('@line/bot-sdk');
+const line = require('Ud5b2f151ca1f0a79de4aad12acce12ed');
 
 const client = new line.Client({
   channelAccessToken: '/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU='
