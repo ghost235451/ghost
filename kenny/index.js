@@ -143,3 +143,168 @@ function _japan() {
 // 	  }
 // });
 
+// var line = require('@line/bot-sdk');
+
+// var client = new line.Client({
+//   channelAccessToken: '/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU='
+// });
+
+// var message = {
+//   type: 'text',
+//   text: 'Hello World!'
+// };
+
+// client.pushMessage('<to>', message)
+//   .then(() => {
+//     ...
+//   })
+//   .catch((err) => {
+//     // error handling
+//   });
+
+event.reply('Hello, world').then(function (data) {
+    // success 
+}).catch(function (error) {
+    // error 
+});
+ 
+event.reply({ type: 'text', text: 'Hello, world' });
+ 
+event.reply([
+    { type: 'text', text: 'Hello, world 1' },
+    { type: 'text', text: 'Hello, world 2' }
+]);
+ 
+event.reply({
+    type: 'image',
+    originalContentUrl: 'https://example.com/original.jpg',
+    previewImageUrl: 'https://example.com/preview.jpg'
+});
+ 
+event.reply({
+    type: 'video',
+    originalContentUrl: 'https://example.com/original.mp4',
+    previewImageUrl: 'https://example.com/preview.jpg'
+});
+ 
+event.reply({
+    type: 'audio',
+    originalContentUrl: 'https://example.com/original.m4a',
+    duration: 240000
+});
+ 
+event.reply({
+    type: 'location',
+    title: 'my location',
+    address: '〒150-0002 東京都渋谷区渋谷２丁目２１−１',
+    latitude: 35.65910807942215,
+    longitude: 139.70372892916203
+});
+ 
+event.reply({
+    type: 'sticker',
+    packageId: '1',
+    stickerId: '1'
+});
+ 
+event.reply({
+    type: 'imagemap',
+    baseUrl: 'https://example.com/bot/images/rm001',
+    altText: 'this is an imagemap',
+    baseSize: { height: 1040, width: 1040 },
+    actions: [{
+        type: 'uri',
+        linkUri: 'https://example.com/',
+        area: { x: 0, y: 0, width: 520, height: 1040 }
+    }, {
+        type: 'message',
+        text: 'hello',
+        area: { x: 520, y: 0, width: 520, height: 1040 }
+    }]
+});
+ 
+event.reply({
+    type: 'template',
+    altText: 'this is a buttons template',
+    template: {
+        type: 'buttons',
+        thumbnailImageUrl: 'https://example.com/bot/images/image.jpg',
+        title: 'Menu',
+        text: 'Please select',
+        actions: [{
+            type: 'postback',
+            label: 'Buy',
+            data: 'action=buy&itemid=123'
+        }, {
+            type: 'postback',
+            label: 'Add to cart',
+            data: 'action=add&itemid=123'
+        }, {
+            type: 'uri',
+            label: 'View detail',
+            uri: 'http://example.com/page/123'
+        }]
+    }
+});
+ 
+event.reply({
+    type: 'template',
+    altText: 'this is a confirm template',
+    template: {
+        type: 'confirm',
+        text: 'Are you sure?',
+        actions: [{
+            type: 'message',
+            label: 'Yes',
+            text: 'yes'
+        }, {
+            type: 'message',
+            label: 'No',
+            text: 'no'
+        }]
+    }
+});
+ 
+event.reply({
+    type: 'template',
+    altText: 'this is a carousel template',
+    template: {
+        type: 'carousel',
+        columns: [{
+            thumbnailImageUrl: 'https://example.com/bot/images/item1.jpg',
+            title: 'this is menu',
+            text: 'description',
+            actions: [{
+                type: 'postback',
+                label: 'Buy',
+                data: 'action=buy&itemid=111'
+            }, {
+                type: 'postback',
+                label: 'Add to cart',
+                data: 'action=add&itemid=111'
+            }, {
+                type: 'uri',
+                label: 'View detail',
+                uri: 'http://example.com/page/111'
+            }]
+        }, {
+            thumbnailImageUrl: 'https://example.com/bot/images/item2.jpg',
+            title: 'this is menu',
+            text: 'description',
+            actions: [{
+                type: 'postback',
+                label: 'Buy',
+                data: 'action=buy&itemid=222'
+            }, {
+                type: 'postback',
+                label: 'Add to cart',
+                data: 'action=add&itemid=222'
+            }, {
+                type: 'uri',
+                label: 'View detail',
+                uri: 'http://example.com/page/222'
+            }]
+        }]
+    }
+
+   });
