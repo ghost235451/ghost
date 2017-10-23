@@ -26,8 +26,8 @@ var pm = [];
 // bot.on('message',function(event){
 // 	event.reply("gg");
 // });
-_tt();
-// _japan();
+
+_japan();
 // _bot();
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
@@ -144,25 +144,6 @@ function _japan() {
 // 	  }
 // });
 
-var line = require('linebot');
-
-var client = new line.Client({
-  channelAccessToken: '/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU='
-});
-function _tt(){
-var message = {
-  type: 'text',
-  text: 'Hello World!'
-};
-
-client.pushMessage('<to>', message)
-  .then(() => {
-    ...
-  })
-  .catch((err) => {
-    // error handling
-  });
-}
 
 
 
