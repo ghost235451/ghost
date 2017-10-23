@@ -26,6 +26,7 @@ var pm = [];
 // bot.on('message',function(event){
 // 	event.reply("gg");
 // });
+_tt();
 _japan();
 // _bot();
 
@@ -142,7 +143,7 @@ function _japan() {
 // 	    });
 // 	  }
 // });
-
+function _tt(){
 var line = require('linebot');
 
 var client = new line.Client({
@@ -161,4 +162,8 @@ client.pushMessage('<to>', message)
   .catch((err) => {
     // error handling
   });
+}
+
+
+
 
