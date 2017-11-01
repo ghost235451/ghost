@@ -169,7 +169,6 @@ var getArticle = function(links, callback, contents) {
 		//遞迴(recursion)結束
         callback(contents);
     }
-}
     request(HOST + links[0], function(err, res, body) {
         if (!err && res.statusCode === 200) {
             //console.log(body); 
@@ -206,6 +205,8 @@ var getArticle = function(links, callback, contents) {
         }
     });
 };
+}
+
 
 console.log("爬蟲開始......");
 getPage('http://www.atmovies.com.tw/movie/next/0/', function(links) {
