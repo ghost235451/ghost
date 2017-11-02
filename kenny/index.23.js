@@ -187,8 +187,8 @@ var getArticle = function(links, callback, contents) {
                 $('.openthis').remove(); // 移除 class openthis	，避免	infor 抓取到多於字串
 				//console.log($(e).html())
 				
-                // infor = $(e).find('span.date').first().text()
-                // infor = infor.replace(/\s+/g, " ");
+                infor = $(e).find('span.date').first().text()
+                infor = infor.replace(/\s+/g, " ");
                 //console.log("infor:" + infor);
                 //console.log("===========");
 
@@ -196,7 +196,7 @@ var getArticle = function(links, callback, contents) {
                     movie: movie,
                     url: HOST + url,
                     descri: descri,
-                    // infor: infor
+                    infor: infor
                 };
                 bot.on('message',function(event){
                 event.reply(article);
