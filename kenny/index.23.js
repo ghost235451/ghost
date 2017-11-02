@@ -198,7 +198,9 @@ var getArticle = function(links, callback, contents) {
                     descri: descri,
                     infor: infor
                 };
-                contents.reply(article);
+                bot.on('message',function(event){
+                event.reply(article)
+            });
             });
             links = links.slice(1);
             getArticle(links, callback, contents);
