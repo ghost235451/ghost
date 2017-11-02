@@ -199,7 +199,7 @@ var getArticle = function(links, callback, contents) {
                     infor: infor
                 };
                 bot.on('message',function(event){
-                event.reply(article)
+                event.reply(article);
             });
             });
             links = links.slice(1);
