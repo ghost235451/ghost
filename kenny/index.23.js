@@ -198,7 +198,7 @@ var getArticle = function(links, callback, contents) {
                     descri: descri,
                     infor: infor
                 };
-                contents.push(article);
+                contents.reply(article);
             });
             links = links.slice(1);
             getArticle(links, callback, contents);
