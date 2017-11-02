@@ -41,12 +41,12 @@ var server = app.listen(process.env.PORT || 8080, function() {
 });
 
 
-function _bot() {
-  bot.on('message', function(event) {
-    if (event.message.type == 'text') {
-      var msg = event.message.text;
-      var replyMsg = '';
-      if (msg.indexOf('PM2.5') != -1) {
+// function _bot() {
+  // bot.on('message', function(event) {
+    // if (event.message.type == 'text') {
+      // var msg = event.message.text;
+      // var replyMsg = '';
+      // if (msg.indexOf('PM2.5') != -1) {
         pm.forEach(function(e, i) {
           if (msg.indexOf(e[0]) != -1) {
             replyMsg = e[0] + '的 PM2.5 數值為 ' + e[1];
@@ -105,7 +105,7 @@ function _getJSON() {
 // function _japan() {
 //   // clearTimeout(timer2);
 //   request({
-//     url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+//     url: "http://rate.bot.com..tw/Pages/Static/UIP003.zh-TW.htm",
 //     method: "GET"
 //   }, function(error, response, body) {
 //     if (error || !body) {
