@@ -47,41 +47,41 @@ var server = app.listen(process.env.PORT || 8080, function() {
       // var msg = event.message.text;
       // var replyMsg = '';
       // if (msg.indexOf('PM2.5') != -1) {
-        pm.forEach(function(e, i) {
-          if (msg.indexOf(e[0]) != -1) {
-            replyMsg = e[0] + '的 PM2.5 數值為 ' + e[1];
-          }
-        });
-        if (replyMsg == '') {
-          replyMsg = '請輸入正確的地點';
-        }
-      }
-      if (replyMsg == '') {
-        replyMsg = '不知道「'+msg+'」是什麼意思 :p';
-      }
+//         pm.forEach(function(e, i) {
+//           if (msg.indexOf(e[0]) != -1) {
+//             replyMsg = e[0] + '的 PM2.5 數值為 ' + e[1];
+//           }
+//         });
+//         if (replyMsg == '') {
+//           replyMsg = '請輸入正確的地點';
+//         }
+//       }
+//       if (replyMsg == '') {
+//         replyMsg = '不知道「'+msg+'」是什麼意思 :p';
+//       }
 
-      event.reply(replyMsg).then(function(data) { 
-        console.log(replyMsg);
-      }).catch(function(error) {
-        console.log('error');
-      });
-    }
-  });
+//       event.reply(replyMsg).then(function(data) { 
+//         console.log(replyMsg);
+//       }).catch(function(error) {
+//         console.log('error');
+//       });
+//     }
+//   });
 
-}
+// }
 
-function _getJSON() {
-  // clearTimeout(timer);
-  getJSON('http://opendata2.epa.gov.tw/AQX.json', function(error, response) {
-    response.forEach(function(e, i) {
-      pm[i] = [];
-      pm[i][0] = e.SiteName;
-      pm[i][1] = e['PM2.5'] * 1;
-      pm[i][2] = e.PM10 * 1;
-    });
-  });
-  // timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
-}
+// function _getJSON() {
+//   // clearTimeout(timer);
+//   getJSON('http://opendata2.epa.gov.tw/AQX.json', function(error, response) {
+//     response.forEach(function(e, i) {
+//       pm[i] = [];
+//       pm[i][0] = e.SiteName;
+//       pm[i][1] = e['PM2.5'] * 1;
+//       pm[i][2] = e.PM10 * 1;
+//     });
+//   });
+//   // timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
+// }
 
 
 // bot.on('message', function(event) {
@@ -174,7 +174,7 @@ var getArticle = function(links, callback, contents) {
             //console.log(body); 
             var $ = cheerio.load(body);
             $('article.box.post').each(function(i, e) {
-                movie = $(e).find('.filmTitle').text()
+                movie = $(e).find('.filmTitle').text(
                 movie = movie.replace(/\s+/g, " "); // 移除 前後中 多餘的空格
                 //console.log("movie:" + movie);
 				
@@ -187,8 +187,8 @@ var getArticle = function(links, callback, contents) {
                 $('.openthis').remove(); // 移除 class openthis	，避免	infor 抓取到多於字串
 				//console.log($(e).html())
 				
-                infor = $(e).find('span.date').first().text()
-                infor = infor.replace(/\s+/g, " ");
+                // infor = $(e).find('span.date').first().text()
+                // infor = infor.replace(/\s+/g, " ");
                 //console.log("infor:" + infor);
                 //console.log("===========");
 
@@ -196,7 +196,7 @@ var getArticle = function(links, callback, contents) {
                     movie: movie,
                     url: HOST + url,
                     descri: descri,
-                    infor: infor
+                    // infor: infor
                 };
                 bot.on('message',function(event){
                 event.reply(article);
