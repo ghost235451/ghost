@@ -37,7 +37,7 @@ app.post('/', linebotParser);  //路徑
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen(process.env.PORT || 8080, function() {
   var port = server.address().port;
-  console.log("App now running on port", port);
+  console.log("App now running on port", po。rt);
 });
 
 
@@ -105,17 +105,17 @@ var server = app.listen(process.env.PORT || 8080, function() {
 function _japan() {
   // clearTimeout(timer2);
   request({
-    url: "http://rate.bot.com..tw/Pages/Static/UIP003.zh-TW.htm",
+    url: "view-source:https://www.huashan1914.com/w/huashan1914/exhibition",
     method: "GET"
   }, function(error, response, body) {
     if (error || !body) {
       return;
     } else {
       var $ = cheerio.load(body);
-      var target = $(".rate-content-sight.text-right.print_hide");
+      var target = $(".card-text-name");
       // console.log(target[14].children[0].data);
-      var jp = target[14].children[0].data;
-      var jp2 = target[0].children[0].data;
+      var jp = target[14].data;
+      // var jp2 = target[0].children[0].data;
       // if (jp > 0) {
       	bot.on('message',function(event){
       		event.reply('現在日幣匯率' + jp +'美金' +jp2);
