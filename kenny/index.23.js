@@ -112,7 +112,7 @@ function _japan() {
       return;
     } else {
       var $ = cheerio.load(body);
-      var target = $(".card-text-name");
+      var target = $("card-text-name");
       // console.log(target[14].children[0].data);
       var jp = target[14].data;
       // var jp2 = target[0].children[0].data;
