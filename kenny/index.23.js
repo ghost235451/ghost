@@ -26,8 +26,8 @@ var pm = [];
 // bot.on('message',function(event){
 // 	event.reply("gg");
 // });
-_usa();
-// _japan();
+// _usa();
+_japan();
 // _bot();
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
@@ -102,30 +102,30 @@ var server = app.listen(process.env.PORT || 8080, function() {
 
 
 
-// function _japan() {
-//   // clearTimeout(timer2);
-//   request({
-//     url: "http://rate.bot.com..tw/Pages/Static/UIP003.zh-TW.htm",
-//     method: "GET"
-//   }, function(error, response, body) {
-//     if (error || !body) {
-//       return;
-//     } else {
-//       var $ = cheerio.load(body);
-//       var target = $(".rate-content-sight.text-right.print_hide");
-//       // console.log(target[14].children[0].data);
-//       var jp = target[14].children[0].data;
-//       var jp2 = target[0].children[0].data;
-//       // if (jp > 0) {
-//       	bot.on('message',function(event){
-//       		event.reply('現在日幣匯率' + jp +'美金' +jp2);
-//       	});
-//         // bot.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
-//       // }
-//       // timer2 = setInterval(_japan, 120000);
-//     }
-//   });
-// }
+function _japan() {
+  // clearTimeout(timer2);
+  request({
+    url: "https://www.huashan1914.com/w/huashan1914/exhibition",
+    method: "GET"
+  }, function(error, response, body) {
+    if (error || !body) {
+      return;
+    } else {
+      var $ = cheerio.load(body);
+      var target = $("card-text-name");
+      // console.log(target[14].children[0].data);
+      var jp = target[14].children[0].data;
+      // var jp2 = target[0].children[0].data;
+      // if (jp > 0) {
+      	bot.on('message',function(event){
+      		event.reply('現在活動' + jp +'');
+      	});
+        // bot.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+      // }
+      // timer2 = setInterval(_japan, 120000);
+    }
+  });
+}
 
 // function _japan() {
 // 	bot.on('message', function(event) {
@@ -144,83 +144,83 @@ var server = app.listen(process.env.PORT || 8080, function() {
 // 	  }
 // });
 
-var HOST = 'http://www.atmovies.com.tw/';
+// var HOST = 'http://www.atmovies.com.tw/';
 
-var getPage = function(url, callback, links) {
-    var links = links || []; 
-    request(url, function(err, res, body) {
-        if (!err && res.statusCode == 200) {
-            var lastPage;
-            var $ = cheerio.load(body); 
-			//得到全部 page 的 URL
-            $('div > div:nth-child(3) > div > ul > li > a').each(function(i, e) { 
-                links.push($(e).attr('href'));
-            });
-            callback(links);
-        }
-    });
-};
+// var getPage = function(url, callback, links) {
+//     var links = links || []; 
+//     request(url, function(err, res, body) {
+//         if (!err && res.statusCode == 200) {
+//             var lastPage;
+//             var $ = cheerio.load(body); 
+// 			//得到全部 page 的 URL
+//             $('div > div:nth-child(3) > div > ul > li > a').each(function(i, e) { 
+//                 links.push($(e).attr('href'));
+//             });
+//             callback(links);
+//         }
+//     });
+// };
 
-//利用遞迴(recursion)的觀念
-function _usa(){
-var getArticle = function(links, callback, contents) {
-    contents = contents || [];
-    if (links.length === 0) {
-		//遞迴(recursion)結束
-        callback(contents);
-    }
-    request(HOST + links[0], function(err, res, body) {
-        if (!err && res.statusCode === 200) {
-            //console.log(body); 
-            var $ = cheerio.load(body);
-            $('article.box.post').each(function(i, e) {
-                movie = $(e).find('.filmTitle').text(
-                movie = movie.replace(/\s+/g, " "); // 移除 前後中 多餘的空格
-                //console.log("movie:" + movie);
+// //利用遞迴(recursion)的觀念
+// function _usa(){
+// var getArticle = function(links, callback, contents) {
+//     contents = contents || [];
+//     if (links.length === 0) {
+// 		//遞迴(recursion)結束
+//         callback(contents);
+//     }
+//     request(HOST + links[0], function(err, res, body) {
+//         if (!err && res.statusCode === 200) {
+//             //console.log(body); 
+//             var $ = cheerio.load(body);
+//             $('article.box.post').each(function(i, e) {
+//                 movie = $(e).find('.filmTitle').text(
+//                 movie = movie.replace(/\s+/g, " "); // 移除 前後中 多餘的空格
+//                 //console.log("movie:" + movie);
 				
-                url = $(e).find('.filmTitle a').attr('href')
-                //console.log("url:" + url);
+//                 url = $(e).find('.filmTitle a').attr('href')
+//                 //console.log("url:" + url);
 				
-                descri = $(e).find('p').text()
-                //console.log("descri:" + descri);
+//                 descri = $(e).find('p').text()
+//                 //console.log("descri:" + descri);
 				
-                $('.openthis').remove(); // 移除 class openthis	，避免	infor 抓取到多於字串
-				//console.log($(e).html())
+//                 $('.openthis').remove(); // 移除 class openthis	，避免	infor 抓取到多於字串
+// 				//console.log($(e).html())
 				
-                infor = $(e).find('span.date').first().text()
-                infor = infor.replace(/\s+/g, " ");
-                //console.log("infor:" + infor);
-                //console.log("===========");
+//                 infor = $(e).find('span.date').first().text()
+//                 infor = infor.replace(/\s+/g, " ");
+//                 //console.log("infor:" + infor);
+//                 //console.log("===========");
 
-                var article = {
-                    movie: movie,
-                    url: HOST + url,
-                    descri: descri,
-                    infor: infor
-                };
-                bot.on('message',function(event){
-                event.reply(article);
-            });
-            });
-            links = links.slice(1);
-            getArticle(links, callback, contents);
-        }
-    });
-};
-}
+//                 var article = {
+//                     movie: movie,
+//                     url: HOST + url,
+//                     descri: descri,
+//                     infor: infor
+//                 };
+//                 bot.on('message',function(event){
+//                 event.reply(article);
+//             });
+//             });
+//             links = links.slice(1);
+//             getArticle(links, callback, contents);
+//         }
+//     });
+// };
+// }
 
 
-console.log("爬蟲開始......");
-getPage('http://www.atmovies.com.tw/movie/next/0/', function(links) {
-    getArticle(links, function(contents) {
-        fs.writeFile('movie_result.json', JSON.stringify(contents, null, '\t'), function(err) {
-            if (err) {
-                return console.error(err);
-            }
-			console.log("抓取結束");
-        });
-    });
-});
+// console.log("爬蟲開始......");
+// getPage('http://www.atmovies.com.tw/movie/next/0/', function(links) {
+//     getArticle(links, function(contents) {
+//         fs.writeFile('movie_result.json', JSON.stringify(contents, null, '\t'), function(err) {
+//             if (err) {
+//                 return console.error(err);
+//             }
+// 			console.log("抓取結束");
+//         });
+//     });
+// });
 
 
 
