@@ -20,8 +20,8 @@ var bot = linebot({
   "channelAccessToken": "/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-var timer;
-var pm = [];
+// var timer;
+// var pm = [];
 // _getJSON();
 // bot.on('message',function(event){
 // 	event.reply("gg");
