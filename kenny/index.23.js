@@ -114,11 +114,11 @@ function _japan() {
       var $ = cheerio.load(body);
       var target = $("card-text-name");
       // console.log(target[14].children[0].data);
-      var jp = target[5].data;
+      var jp = target[5].children[0].data;
       // var jp2 = target[0].children[0].data;
       // if (jp > 0) {
       	bot.on('message',function(event){
-      		event.reply('現在日幣匯率' + jp +'美金' +jp2);
+      		event.reply('現在日幣匯率' + jp);
       	});
         // bot.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
       // }
