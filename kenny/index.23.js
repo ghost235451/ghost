@@ -27,8 +27,8 @@ var pm = [];
 // 	event.reply("gg");
 // });
 // _usa();
-_japan();
-// _bot();
+// _japan();
+_bot();
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 var linebotParser = bot.parser();
@@ -84,48 +84,48 @@ var server = app.listen(process.env.PORT || 8080, function() {
 // }
 
 
-// bot.on('message', function(event) {
-//   if (event.message.type = 'text') {
+bot.on('message', function(event) {
+  if (event.message.type = 'text') {
 
-//     var msg = event.message.text;
-//   //收到文字訊息時，直接把收到的訊息傳回去
-//     event.reply(msg).then(function(data) {
-//     	event.reply('...');
-//       // 傳送訊息成功時，可在此寫程式碼 
-//       console.log(msg);
-//     }).catch(function(error) {
-//       // 傳送訊息失敗時，可在此寫程式碼 
-//       console.log('錯誤產生，錯誤碼：'+error);
-//     });
-//   }
-// });
+    var msg = event.message.text;
+  //收到文字訊息時，直接把收到的訊息傳回去
+    event.reply(msg).then(function(data) {
+    	event.reply('...');
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(msg);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }
+});
 
 
 
-function _japan() {
-  // clearTimeout(timer2);
-  request({
-    url: "view-source:https://www.huashan1914.com/w/huashan1914/exhibition",
-    method: "GET"
-  }, function(error, response, body) {
-    if (error || !body) {
-      return;
-    } else {
-      var $ = cheerio.load(body);
-      var target = $("card-text-name");
-      // console.log(target[14].children[0].data);
-      var jp = target[5].data;
-      // var jp2 = target[0].children[0].data;
-      // if (jp > 0) {
-      	bot.on('message',function(event){
-      		event.reply('現在日幣匯率' + jp);
-      	});
-        // bot.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
-      // }
-      // timer2 = setInterval(_japan, 120000);
-    }
-  });
-}
+// function _japan() {
+//   // clearTimeout(timer2);
+//   request({
+//     url: "view-source:https://www.huashan1914.com/w/huashan1914/exhibition",
+//     method: "GET"
+//   }, function(error, response, body) {
+//     if (error || !body) {
+//       return;
+//     } else {
+//       var $ = cheerio.load(body);
+//       var target = $("card-text-name");
+//       // console.log(target[14].children[0].data);
+//       var jp = target[5].data;
+//       // var jp2 = target[0].children[0].data;
+//       // if (jp > 0) {
+//       	bot.on('message',function(event){
+//       		event.reply('現在日幣匯率' + jp);
+//       	});
+//         // bot.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+//       // }
+//       // timer2 = setInterval(_japan, 120000);
+//     }
+//   });
+// }
 
 // function _japan() {
 // 	bot.on('message', function(event) {
