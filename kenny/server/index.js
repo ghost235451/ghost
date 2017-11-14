@@ -176,25 +176,25 @@ app.use(bodyParser.json());
 app.use('/api', Router)
 app.use(express.static(__dirname + "/public"))
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/BetterVieshowBot'
-let db
+// const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/BetterVieshowBot'
+// let db
 
-mongoose.connect(MONGODB_URI)
-// Plugging in your own Promises Library using ES6 Promise
-// Ref: http://mongoosejs.com/docs/promises.html
-mongoose.Promise = global.Promise
+// mongoose.connect(MONGODB_URI)
+// // Plugging in your own Promises Library using ES6 Promise
+// // Ref: http://mongoosejs.com/docs/promises.html
+// mongoose.Promise = global.Promise
 
-db = mongoose.connection
+// db = mongoose.connection
 
-db.on('error', (err) => {
-  console.error('MongoDB connection error: ', err)
-  process.exit(1)
-})
-db.on('open', () => {
-  server.listen(process.env.PORT || 3000)
-  const port = server.address().port
-  console.log('App now running on port', port)
-})
+// db.on('error', (err) => {
+//   console.error('MongoDB connection error: ', err)
+//   process.exit(1)
+// })
+// db.on('open', () => {
+//   server.listen(process.env.PORT || 3000)
+//   const port = server.address().port
+//   console.log('App now running on port', port)
+// })
 
 
 
