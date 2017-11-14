@@ -14,7 +14,7 @@ import { channelID, channelSecret, channelToken } from '../config/line-bot'
 import { commandType } from '../src/textCommand'
 import Showtime from '../models/showtime'
 
-const googleMapsClient = require('@google/maps').createClient({ key: 'AIzaSyDjyhBJ__XUTzGUW98URAOCzu1uIArTnEE' })
+const googleMapsClient = require('@google/maps').createClient({ key: 'AIzaSyArlObBabMz7RLjv03RE3PSd0u2zphX6uo' })
 let app = express()
 const server = require('http').Server(app)
 let bot = LINEBot.create({
