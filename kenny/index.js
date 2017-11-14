@@ -104,16 +104,16 @@ function _getJSON() {
 function _japan() {
   // clearTimeout(timer2);
   request({
-    url: "http://www.songshanculturalpark.org/exhibitionlist.aspx",
+    url: "view-source:https://www.huashan1914.com/w/huashan1914/exhibition",
     method: "GET"
   }, function(error, response, body) {
     if (error || !body) {
       return;
     } else {
       var $ = cheerio.load(body);
-      var target = $(".card-text-name");
+      var target = $(".card.text.name");
       // console.log(target[14].children[0].data);
-      var jp = target[14].children[0].data;
+      var jp = target[14].data;
       // var jp2 = target[0].children[0].data;
       // if (jp > 0) {
       	bot.on('message',function(event){
